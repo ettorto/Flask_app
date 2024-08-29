@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Teachers</title>
+
+{% endblock %}
+{% block body %}
+<h2 style="font-style: italic;">Add/Edit Teachers</h2>
+<br>
+<form action="/teachers" method="POST">
+    <div class="form-group">
+        <div class="col-sm-5">
+        <label for="exampleFormControlSelect3">Department</label>
+        <br>
+        
+        <select class="form-control" name="department" id="exampleFormControlSelect3">
+            {% for department in departments %}
+              <option>{{ department.department_name }}</option>
+            {% endfor %}
+        </div>
+        </select>
+      </div>
+    <div>
+        <div class="col-sm-5">
+        <label>Name</label>
+        <br>
+        <input type="text" name="name" placeholder="Enter teacher name">
+        </div>
+    </div>
+    <br>
+    <div class="col-sm-5">
+    <button type="submit" class="btn btn-primary">Add Teacher</button>
+    </div>
+</form>
+<br>
+<hr>
+<br>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for teacher in teachers %}
+      <tr>
+        <th scope="row">{{ teacher.name }}</th>
+        <td>{{ teacher.department }}</td>
+        <td><a href="/editinstructor/{{ teacher.id }}">Edit</a></td>
+        <td><a href="/deleteinstructor/{{ teacher.id }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

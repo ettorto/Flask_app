@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body%}
+<h2>This is the edit page</h2>
+    <form action="/edituser/{{user.id}}" method="POST">
+        <label>Student Name:</label>
+        <input type="text" name="student_name" placeholder="Enter student name" value="{{user.student_name}}">
+        <label>Age:</label>
+        <input type="text" name="age" placeholder="Enter age" value="{{user.age}}">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    
+{% endblock %}    

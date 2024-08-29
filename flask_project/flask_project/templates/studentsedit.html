@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Edit Student</title>
+
+{% endblock %}
+{% block body %}
+<h2 style="font-style: italic;">Add/Edit students</h2>
+<form action="/editstudent/{{ student.id }}" method="POST">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Name</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Name</div>
+              </div>
+              <input type="text" name="name" class="form-control" id="inlineFormInputGroup" value="{{ student.name }}" placeholder="Student Name">
+            </div>
+          </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup2">Age</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Age</div>
+          </div>
+          <input type="text" name="age" class="form-control" id="inlineFormInputGroup2" value="{{student.age}}" placeholder="Age">
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Save Changes</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <hr>
+  <br>
+  <form action="/addcourse/{{ student.id }}" method="POST">
+    <div class="form-group">
+      <div class="col-sm-5">
+      <label for="exampleFormControlSelect3">Courses</label>
+      <br>
+      <select class="form-control" name="course" id="exampleFormControlSelect3"> 
+      {% for course in courses %}
+          <option>{{ course.course_name }}</option>
+      {% endfor %}
+      </select>
+    </div>
+    </div>
+    <div class="col-sm-5">
+      <button type="submit" class="btn btn-primary">Add Course</button>
+    </div>
+  <div>
+  </form>
+  <br>
+  <hr>
+  <br>
+  <h3>Courses</h3>
+  <br>
+  {% for s_course in s_courses %} 
+  <p>{{ s_course.course_name }} &emsp; &emsp;<a href="/del/{{ student.id }}/{{ s_course.id }}" class="btn btn-danger">Delete</a></p>
+  <hr>
+ 
+  {% endfor %}
+ 
+{% endblock %}

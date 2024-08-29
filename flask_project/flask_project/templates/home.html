@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<a href="/about">About</a> <a href="/home">Home</a>
+    <h2 style="font-style: italic;">This is the homepage</h2>
+    <br>
+    <form action="/welcome" method="POST">
+        <div>    
+            <label>Name</label>
+            <input type="text" name="student_name" placeholder="Enter username">
+        </div>
+            <div>
+                <label>Age</label>
+                <input type="text"  name="age" placeholder="Enter age">
+            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <a href="/department">Department</a>
+    <br>
+    <a href="/course">Course</a>
+    
+{% endblock%}

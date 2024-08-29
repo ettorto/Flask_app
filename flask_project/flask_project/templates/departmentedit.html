@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Department Edit</title>
+
+{% endblock %}
+{% block body %}
+    <h2 style="font-style: italic;">Add/Edit departments</h2>
+    <br>
+    <form action="/editdepartment/{{ department.id }}" method="POST">
+        <div>    
+            <label>Name</label>
+            <input type="text" name="department_name" placeholder="Enter department name" value="{{ department.department_name }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <hr>
+    <br>
+    
+    
+    
+{% endblock%}

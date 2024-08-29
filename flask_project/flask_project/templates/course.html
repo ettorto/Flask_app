@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Course</title>
+
+{% endblock %}
+{% block body %}
+    <h2 style="font-style: italic;">Add/Edit courses</h2>
+    <br>
+    <form action="/course" method="POST">
+        <div class="form-group">
+            <div class="col-sm-5">
+            <label for="exampleFormControlSelect3">Instructor</label>
+            <br>
+            
+            <select class="form-control" name="teacher" id="exampleFormControlSelect3"> 
+            {% for teacher in teachers %}
+                <option>{{ teacher.name }}</option>
+            {% endfor %}
+            </div>
+            </select>
+          </div>
+        <div>
+            <div class="col-sm-5">   
+            <label>Course name</label>
+            <br>
+            <input type="text" name="course_name" placeholder="Enter course name">
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-5">
+        <button type="submit" class="btn btn-primary">Add Course</button>
+        </div>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Insructor</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+          <tr>
+            <th scope="row">{{ course.course_name }}</th>
+            <td>{{ course.department }}</td>
+            <td>{{ course.teacher }}</td>
+            <td><a href="/editcourse/{{ course.id }}">Edit</a></td>
+            <td><a href="/deletecourse/{{ course.id }}">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    
+{% endblock%}

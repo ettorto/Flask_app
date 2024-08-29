@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Students</title>
+
+{% endblock %}
+{% block body %}
+<h2 style="font-style: italic;">Add/Edit students</h2>
+<form action="/students" method="POST">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Name</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Name</div>
+              </div>
+              <input type="text" name="name" class="form-control" id="inlineFormInputGroup" placeholder="Student Name">
+            </div>
+          </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup2">Age</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Age</div>
+          </div>
+          <input type="text" name="age" class="form-control" id="inlineFormInputGroup2" placeholder="Age">
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-2">Add Student</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <hr>
+  <br>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for student in students %}
+      <tr>
+        <th scope="row">{{ student.name }}</th>
+        <td>{{ student.age }}</td>
+        <td><a href="/editstudent/{{ student.id }}">Edit</a></td>
+        <td><a href="/delstudent/{{ student.id }}">Delete</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

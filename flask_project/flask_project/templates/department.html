@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block head %} 
+
+<title>Department</title>
+
+{% endblock %}
+{% block body %}
+    <h2 style="font-style: italic;">Add/Edit departments</h2>
+    <br>
+    <form action="/department" method="POST">
+        <div>    
+            <label>Name</label>
+            <input type="text" name="department_name" placeholder="Enter department name">
+        </div>
+        <button type="submit" class="btn btn-primary">Add department</button>
+    </form>
+    <hr>
+    <br>
+    <h3> Existing Departments </h3>
+    <br>
+    {% for department in departments %}
+    <p>{{ department.department_name }} &emsp; &emsp;<a href="/editdepartment/{{ department.id }}">Edit</a></p>
+    {% endfor %}
+    
+    
+{% endblock%}

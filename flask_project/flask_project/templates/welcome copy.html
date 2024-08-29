@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+<a href="/about">About</a> <a href="/home">Home</a>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Age</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{user.student_name}}</td>
+            <td>{{user.age}}</td>
+            <td><a href="/edituser/{{user.id}}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Department Name</th>
+        </tr>
+        {% for user in users2%}
+        <tr>
+            <td>{{user.department_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>Course Name</th>
+        </tr>
+        {% for user in users3%}
+        <tr>
+            <td>{{user.course_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    
+{% endblock %}
